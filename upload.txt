@@ -1,0 +1,101 @@
+PORTFOLIO UPLOAD INSTRUCTIONS
+=============================
+
+1. FOLDER LAYOUT
+----------------
+Your GitHub repository should look like this:
+
+  index.html
+  maps/        (your PNG images)
+  data/        (your GeoJSON files)
+
+Create the "maps" and "data" folders in the repository, then upload your
+files into them.
+
+
+2. ADDING PNG MAPS (gallery)
+----------------------------
+There are 6 PNG slots in index.html. Each one has a comment above it:
+
+  <!-- PNG MAP 1: upload your PNG to the maps/ folder and change src below. -->
+
+To fill a slot:
+  a) Put your image in the maps/ folder, e.g. maps/coastline.png
+  b) In index.html, find the matching slot and change the src:
+
+       <img src="maps/map-1.png" ...>
+     becomes
+       <img src="maps/coastline.png" ...>
+
+     (Or simply name your file map-1.png and skip this step.)
+
+  c) Change the title and description in the caption below the image:
+
+       <div class="cap"><b>Map title 1</b><span>QGIS · 2026</span></div>
+     becomes
+       <div class="cap"><b>Beach profile, Albion</b><span>QGIS · 2026</span></div>
+
+  d) Also update alt="Map title 1" to describe the map.
+
+To add more than 6 maps: copy one whole block (from <!-- PNG MAP ... --> down
+to its closing </div>) and paste it right after the last one.
+
+To remove a slot: delete its whole block.
+
+Tips: keep each PNG under about 1-2 MB so the page loads quickly. Around
+1600 px wide is plenty.
+
+
+3. ADDING INTERACTIVE MAPS (GeoJSON)
+------------------------------------
+There are 2 interactive slots. Each one has a comment above it:
+
+  <!-- INTERACTIVE MAP 1: ... -->
+  <div class="viewer" data-geojson="data/map-1.geojson">
+
+To fill a slot:
+  a) Put your GeoJSON file in the data/ folder, e.g. data/coastline.geojson
+  b) Change data-geojson to match:
+
+       data-geojson="data/map-1.geojson"
+     becomes
+       data-geojson="data/coastline.geojson"
+
+     (Or name your file map-1.geojson and skip this step.)
+
+  c) Change the title: <b>Map title 1</b>
+
+Until the file exists, the slot shows a sample shape labelled "Placeholder".
+
+Notes:
+  - Export from QGIS as GeoJSON using EPSG:4326 (WGS 84, lat/long).
+  - Keep files small (simplify geometries if needed). Under 2-3 MB is best.
+  - Points, lines and polygons are supported.
+
+
+4. CERTIFICATIONS
+-----------------
+Find the section <div class="certs"> in index.html. Each certification is:
+
+  <div class="cert"><i>01</i><div><b>Title</b><br><small>Issuer · year</small></div></div>
+
+Edit the title and the small text. Copy a line to add another one.
+Still to fill in: NASA, Marine Environmental Science (MES) and MOI details.
+
+
+5. PUBLISH ON GITHUB PAGES
+--------------------------
+  1. Upload index.html, maps/ and data/ to your repository.
+  2. Go to Settings > Pages.
+  3. Under "Build and deployment", choose "Deploy from a branch".
+  4. Select the main branch and the / (root) folder, then Save.
+  5. After a minute, your site is live at:
+       https://YOUR-USERNAME.github.io/REPOSITORY-NAME/
+
+Important: the interactive maps will not load if you just double-click
+index.html on your computer (browsers block loading local files). Test them
+on GitHub Pages, or run a local server in the folder:
+
+  python3 -m http.server
+
+then open http://localhost:8000
